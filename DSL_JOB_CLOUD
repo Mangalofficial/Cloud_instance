@@ -1,0 +1,18 @@
+job('AWS_Infrastructure') {
+  description("End to End Automation usign windows slave")
+  parameters {
+    nodeParam('win_slave') {
+    	defaultNodes(['win_slave'])
+    }
+  }
+  triggers{
+    upstream {
+      upstreamProjects("DSL_JOB_CLOUD")
+      threshold("SUCCESS")
+    }
+  }
+  steps {
+    powerShell(''' cd "C:/Users/mangl/Desktop/terraform/task2"
+terraform apply -auto-approve''')
+    }
+}
