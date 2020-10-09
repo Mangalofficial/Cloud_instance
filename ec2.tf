@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "ap-east-1"
   profile = "manglam"
 }
 
 resource "aws_security_group" "my_security1" {
   name        = "my_security1"
   description = "Allow HTTP inbound traffic"
-  vpc_id      = "vpc-c99984a1"
+  vpc_id      = "vpc-c99987a1"
 
   ingress {
     description = "SSH from VPC"
@@ -37,7 +37,7 @@ resource "aws_security_group" "my_security1" {
 }
 
 
-resource "aws_instance" "myin" {
+resource "aws_instance" "myinstance" {
   ami           = "ami-0447a12f28fddb066"
   instance_type = "t2.micro"
   key_name = "AWS-key"
@@ -58,7 +58,7 @@ resource "aws_instance" "myin" {
     ]
   }
   tags = {
-    Name = "Manglam-OS"
+    Name = "Manglam-OS-1"
   }
 }
 
@@ -98,7 +98,7 @@ resource "null_resource" "nulllocal2"  {
 resource "aws_s3_bucket" "mybucket" {
   bucket = "manglam420"
   acl    = "public-read"
-  region = "ap-south-1"
+  region = "ap-east-1"
   tags = {
     Name = "manglam_bucket420"
   }
